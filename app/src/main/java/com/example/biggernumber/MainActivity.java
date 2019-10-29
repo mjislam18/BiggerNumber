@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    private int ScoreCounter;
 
     int R1;
     int R2;
@@ -76,18 +79,35 @@ public class MainActivity extends AppCompatActivity {
 
     public void on_button_Click1(View view) {
 
+        TextView Score = (TextView) findViewById(R.id.TxtScore);
+
         if (R1 > R2) {
+            ScoreCounter++;
+            Score.setText("Score: "+ ScoreCounter);
             Toast.makeText(getApplicationContext(), "Congratulations", Toast.LENGTH_SHORT).show();
             RandomGenerator();
+        }else{
+            Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
+            ScoreCounter--;
+            Score.setText("Score: "+ ScoreCounter);
         }
 
     }
 
     public void on_button_Click2(View view) {
 
+       TextView Score = (TextView) findViewById(R.id.TxtScore);
+
         if (R2 > R1) {
+
             Toast.makeText(getApplicationContext(), "Congratulations", Toast.LENGTH_SHORT).show();
+            ScoreCounter++;
+            Score.setText("Score: "+ ScoreCounter);
             RandomGenerator();
+        }else{
+            Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
+            ScoreCounter--;
+            Score.setText("Score: "+ ScoreCounter);
         }
 
     }
