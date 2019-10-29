@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public void on_button_Click1(View view) {
 
         if (R1 > R2) {
+            Toast.makeText(getApplicationContext(), "Congratulations", Toast.LENGTH_SHORT).show();
             RandomGenerator();
         }
 
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public void on_button_Click2(View view) {
 
         if (R2 > R1) {
+            Toast.makeText(getApplicationContext(), "Congratulations", Toast.LENGTH_SHORT).show();
             RandomGenerator();
         }
 
