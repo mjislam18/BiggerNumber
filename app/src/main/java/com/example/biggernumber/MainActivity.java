@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     int R1;
     int R2;
+    int LifeCounter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         RandomGenerator();
+
     }
 
 
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     public void on_button_Click1(View view) {
 
         TextView Score = (TextView) findViewById(R.id.TxtScore);
+        TextView Life = (TextView) findViewById(R.id.TxtLife);
 
         if (R1 > R2) {
             ScoreCounter++;
@@ -87,9 +90,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Congratulations", Toast.LENGTH_SHORT).show();
             RandomGenerator();
         }else{
-            Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
-            ScoreCounter--;
+           Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
+            LifeCounter--;
+            Life.setText("Lives: "+ LifeCounter);
+
+            GameOver();
+
             Score.setText("Score: "+ ScoreCounter);
+            Life.setText("Lives: "+ LifeCounter);
         }
 
     }
@@ -97,18 +105,34 @@ public class MainActivity extends AppCompatActivity {
     public void on_button_Click2(View view) {
 
        TextView Score = (TextView) findViewById(R.id.TxtScore);
+       TextView Life = (TextView) findViewById(R.id.TxtLife);
 
         if (R2 > R1) {
-
             Toast.makeText(getApplicationContext(), "Congratulations", Toast.LENGTH_SHORT).show();
             ScoreCounter++;
             Score.setText("Score: "+ ScoreCounter);
             RandomGenerator();
         }else{
             Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
-            ScoreCounter--;
+            LifeCounter--;
+            Life.setText("Lives: "+ LifeCounter);
+
+            GameOver();
+
             Score.setText("Score: "+ ScoreCounter);
+            Life.setText("Lives: "+ LifeCounter);
         }
 
+    }
+
+    public void GameOver(){
+
+        if(LifeCounter == 0){
+            ScoreCounter = 0;
+            LifeCounter = 3;
+
+            Toast.makeText(getApplicationContext(), "Game Over", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
